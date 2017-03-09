@@ -26,29 +26,101 @@
         }
     </script>
 
+    <!-- The following script validates the form's data when the submission button is pressed-->
+    <script>
+        function validate(inForm) {
+
+            var returnVal = true;
+
+            var firstName = inForm.firstName.value;
+            var lastName = inForm.lastName.value;
+            var userName = inForm.userName.value;
+            var password = inForm.password.value;
+            var phone = inForm.phone.value;
+            var email = inForm.email.value;
+            var addressLn1 = inForm.addressLn1.value;
+            var addressLn2 = inForm.addressLn2.value;
+            var addressLn3 = inForm.addressLn3.value;
+            var bdayMonth = inForm.birthdayMonth.value;
+            var bdayDay = inForm.birthdayDay.value;
+            var bdayYear = inForm.birthdayYear.value;
+            var agreed = inForm.agreed.value;
+
+            /* Validate firstName */
+            if (firstName == "") {
+                returnVal = false;
+                alert ("You must enter a value for First Name.")
+            }
+            /* Validate lastName */
+            if (lastName == "") {
+                returnVal = false;
+                alert ("You must enter a value for Last Name.")
+            }
+            /* Validate userName */
+            if (userName == "") {
+                returnVal = false;
+                alert ("You must enter a value for User Name.")
+            }
+            /* Validate password */
+            if (password == "") {
+                returnVal = false;
+                alert ("You must enter a valid password.")
+            }
+            /* Validate phone */
+            if (phone == "") {
+                returnVal = false;
+                alert ("You must enter a valid phone number.")
+            }
+            /* Validate email */
+            if (email == "") {
+                returnVal = false;
+                alert ("You must enter a valid email address.")
+            }
+            /* Validate addressLn1 */
+            if (addressLn1 == "") {
+                returnVal = false;
+                alert ("You must enter a valid address.")
+            }
+            /* Validate addressLn2 */
+            /* Validate addressLn3 */
+            /* Validate bdayMonth */
+            /* Validate bdayDay */
+            /* Validate bdayYear */
+            /* Validate agreed */
+            return returnVal;
+
+        }
+    </script>
+
+    <style>
+        body {
+            margin-left: 10%;
+        }
+    </style>
+
 </head>
 
 <body> 
- 
-  <h1 style="margin-left: 50px;">(Logo) Register</h1> 
+
+  <h1>(Logo) Register</h1> 
 
   <!-- Description for registration page: -->
-  <div style="margin-left: 50px;">
+  <div>
       <small>If this if your first time using our service, please enter your personal information <br />
       below, and we'll get you on your way! <br /><br /></small>
   </div>
  
-  <form onsubmit=""> 
+  <form onsubmit="return validate(this)" method="post"> 
 
-    <table style="margin-left: 50px;">
+    <table>
         <!-- -->
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
         </tr>
         <tr>
-            <td><input style="margin-right: 20px;" type="text" name="first-name" id="first-name" size="20" required /></td>
-            <td><input type="text" name="last-name" id="last-name" size="30" required /></td>
+            <td><input style="margin-right: 20px;" type="text" name="firstName" id="firstName" size="20" required /></td>
+            <td><input type="text" name="lastName" id="lastName" size="30" required /></td>
         </tr>
         <tr><td><br /></td></tr>
         <tr>
@@ -56,7 +128,7 @@
             <th>Password</th>
         </tr>
         <tr>
-            <td><input type="text" name="user-name" id="user-name" size="20" required /></td>
+            <td><input type="text" name="userName" id="userName" size="20" required /></td>
             <td><input type="password" name="password" id="password" size="30" required /></td>
         </tr>
         <tr><td><br /></td></tr>
@@ -73,14 +145,14 @@
             <th>Address</th>
         </tr>
         <tr>
-            <td colspan="2"><input type="text" name="address-ln1" id="address-ln1" size="54" placeholder="Line 1"/></td>
+            <td colspan="2"><input type="text" name="addressLn1" id="addressLn1" size="59" placeholder="Line 1"/></td>
 
         </tr>
         <tr>
-            <td colspan="2"><input type="text" name="address-ln2" id="address-ln2" size="54" placeholder="Line 2"/></td>
+            <td colspan="2"><input type="text" name="addressLn2" id="addressLn2" size="59" placeholder="Line 2"/></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="text" name="address-ln3" id="address-ln3" size="54" placeholder="Line 3"/></td>
+            <td colspan="2"><input type="text" name="addressLn3" id="addressLn3" size="59" placeholder="Line 3"/></td>
         </tr>
         <tr><td><br /></td></tr>
         <tr>
@@ -89,10 +161,10 @@
     </table>
 
   <!--   <div> 
-      <label for="first-name">First Name:</label> 
-      <input type="text" name="first-name" id="first-name" placeholder="John" required /> 
-      <label for="last-name">Last Name:</label> 
-      <input type="text" name="last-name" id="last-name" placeholder="Smith" required /> 
+      <label for="firstName">First Name:</label> 
+      <input type="text" name="firstName" id="firstName" placeholder="John" required /> 
+      <label for="lastName">Last Name:</label> 
+      <input type="text" name="lastName" id="lastName" placeholder="Smith" required /> 
     </div>  -->
      
      <!--
@@ -118,11 +190,11 @@
  
   <!-- WARNING! DANGER! CAUTION! --> 
   <!-- DATE PICKER CRAZINESS BELOW!!!! --> 
-    <div style="margin-left: 50px;"> 
+    <div> 
       <!-- Normally we'd have a label for each field, but since these 3 select drop downs go together, we'll just use one and make it match up to the first select field (month) --> 
       <br />
       <label for="select-choice">Birthday:</label> 
-      <select name="select-choice" id="select-choice" title="Month"> 
+      <select name="birthdayMonth" id="birthdayMonth" title="Month"> 
         <option value="Choice 1" selected disabled>Month</option> 
         <option value="Choice 2">Jan</option> 
         <option value="Choice 3">Feb</option> 
@@ -138,7 +210,7 @@
         <option value="Choice 3">Dec</option> 
       </select> 
        
-      <select name="birthday-day" id="day" title="Day"> 
+      <select name="birthdayDay" id="day" title="Day"> 
         <option value="0" selected disabled>Day</option> 
         <option value="1">1</option> 
         <option value="2">2</option> 
@@ -173,7 +245,7 @@
         <option value="31">31</option> 
       </select> 
        
-      <select name="birthday-year" id="year" title="Year"> 
+      <select name="birthdayYear" id="year" title="Year"> 
         <option value="0" selected disabled>Year</option> 
         <option value="2015">2015</option> 
         <option value="2014">2014</option> 
@@ -289,8 +361,10 @@
       </select> 
     </div> 
     <br />
-    <input style="margin-left: 50px;" type="button" onclick="openTerms()" value="Please read the terms and conditions" />
-    <div style="margin-left: 50px;"> 
+    <!-- <input type="button" onclick="openTerms()" value="Please read the terms and conditions" /> -->
+
+    <iframe src="terms.html" height="500" width="80%"></iframe>
+    <div> 
         <br />
       <label for="checkbox">I agree to the terms and conditions</label> 
       <input type="checkbox" name="agreed" id="agreed" /> 
@@ -298,11 +372,10 @@
 
     <br />
 
-    <div style="margin-left: 50px;"> 
+    <div> 
       <input type="submit" value="Submit" /> 
     </div> 
 
   </form>   
- 
 </body> 
 </html>
